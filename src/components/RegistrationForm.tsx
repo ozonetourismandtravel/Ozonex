@@ -140,24 +140,23 @@ export function RegistrationForm() {
     setSubmitting(true);
 
     try {
-      // 1. Insert the registration row
-      const { data: registration, error: insertError } = await publicSupabase
+      // 1. Insert without reading private registration records
+      const registrationId = crypto.randomUUID();
+
+      const { error: insertError } = await publicSupabase
         .from("registrations")
         .insert({
+          id: registrationId,
           name: form.name.trim(),
           email: form.email.trim(),
           phone: form.phone.trim(),
           business_category: form.businessCategory,
           country: form.country,
-        })
-        .select()
-        .single();
+        });
 
-      if (insertError || !registration) {
-        throw insertError || new Error("Failed to create registration");
+      if (insertError) {
+        throw insertError;
       }
-
-      const registrationId = registration.id as string;
 
       // 2. Upload each document to storage, then record it in registration_documents
       for (const doc of requiredDocs) {
