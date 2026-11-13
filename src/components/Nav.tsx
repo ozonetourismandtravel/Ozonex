@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useRouter } from "@tanstack/react-router";
 import ozonexlogo from "@/assets/finallogo.jpg";
-import { User, Briefcase, ChevronDown } from "lucide-react";
+import { Briefcase, ChevronDown } from "lucide-react";
 
 const mainLinks = [
   { n: "01", label: "Product", href: "/product" },
@@ -18,19 +18,6 @@ const productLinks = [
   { label: "Ozonex B2B", href: "/b2b" },
   { label: "Ozonex B2E", href: "/b2e" },
   { label: "Ozonex CBT", href: "/cbt" },
-];
-
-const loginOptions = [
-  {
-    label: "Agent",
-    href: "https://portal.ozonextravel.com/agent",
-    icon: User,
-  },
-  {
-    label: "Corporate",
-    href: "https://portal.ozonextravel.com/corporate",
-    icon: Briefcase,
-  },
 ];
 
 const registerLink = {
@@ -106,13 +93,11 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false); // desktop dropdown
   const [productExpanded, setProductExpanded] = useState(false); // mobile accordion
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
-  const loginMenuRef = useRef<HTMLDivElement>(null);
   const productMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -151,17 +136,6 @@ export function Nav() {
   }, [open]);
 
   useEffect(() => {
-    if (!loginOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (loginMenuRef.current && !loginMenuRef.current.contains(e.target as Node)) {
-        setLoginOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [loginOpen]);
-
-  useEffect(() => {
     if (!productOpen) return;
     const handleClickOutside = (e: MouseEvent) => {
       if (productMenuRef.current && !productMenuRef.current.contains(e.target as Node)) {
@@ -174,7 +148,6 @@ export function Nav() {
 
   const navigate = (href: string) => {
     setOpen(false);
-    setLoginOpen(false);
     setProductOpen(false);
     setProductExpanded(false);
     router.navigate({ to: href });
@@ -328,117 +301,32 @@ export function Nav() {
 
           {/* Right side */}
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Standalone Register button */}
             {!isMobile && (
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                {/* Login dropdown trigger — now filled to match Register */}
-                <div ref={loginMenuRef} style={{ position: "relative" }}>
-                  <button
-                    onClick={() => setLoginOpen((v) => !v)}
-                    aria-haspopup="true"
-                    aria-expanded={loginOpen}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      background: "#1B1F4B",
-                      color: "#fff",
-                      border: 0,
-                      borderRadius: 999,
-                      padding: "10px 18px",
-                      fontSize: 14,
-                      fontWeight: 500,
-                      cursor: "pointer",
-                      whiteSpace: "nowrap",
-                      transition: "filter 0.15s ease",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.08)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1)")}
-                  >
-                    Login
-                    <ChevronDown
-                      size={14}
-                      strokeWidth={2}
-                      style={{
-                        transition: "transform 0.15s ease",
-                        transform: loginOpen ? "rotate(180deg)" : "rotate(0deg)",
-                      }}
-                    />
-                  </button>
-
-                  {loginOpen && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "calc(100% + 8px)",
-                        right: 0,
-                        background: "#fff",
-                        borderRadius: 14,
-                        border: "1px solid rgba(0,0,0,.08)",
-                        boxShadow: "0 18px 40px -18px rgba(0,0,0,.35)",
-                        overflow: "hidden",
-                        minWidth: 170,
-                      }}
-                    >
-                      {loginOptions.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <a
-                            key={item.href}
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => setLoginOpen(false)}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 8,
-                              padding: "11px 14px",
-                              fontSize: 13,
-                              fontWeight: 500,
-                              color: "#1B1F4B",
-                              textDecoration: "none",
-                              cursor: "pointer",
-                            }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.background = "rgba(27,31,75,.06)")
-                            }
-                            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                          >
-                            <Icon size={15} strokeWidth={2} />
-                            {item.label}
-                          </a>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                {/* Standalone Register button */}
-                <a
-                  href={registerLink.href}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    background: registerLink.bg,
-                    color: "#fff",
-                    border: 0,
-                    borderRadius: 999,
-                    padding: "10px 20px",
-                    fontSize: 14,
-                    fontWeight: 500,
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                    textDecoration: "none",
-                    transition: "filter 0.15s ease",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.08)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1)")}
-                >
-                  <registerLink.icon size={16} strokeWidth={2} />
-                  {registerLink.label}
-                </a>
-              </div>
+              <a
+                href={registerLink.href}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: registerLink.bg,
+                  color: "#fff",
+                  border: 0,
+                  borderRadius: 999,
+                  padding: "10px 20px",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                  transition: "filter 0.15s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.08)")}
+                onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1)")}
+              >
+                <registerLink.icon size={16} strokeWidth={2} />
+                {registerLink.label}
+              </a>
             )}
 
             {isMobile && (
@@ -573,52 +461,6 @@ export function Nav() {
             );
           })}
 
-          <p
-            style={{
-              marginTop: 20,
-              color: "rgba(255,255,255,.4)",
-              fontSize: 11,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-            }}
-          >
-            Login
-          </p>
-          {/* Agent/Corporate now filled navy to match Register, not just bordered */}
-          <div style={{ display: "flex", gap: 12 }}>
-            {loginOptions.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 6,
-                    flex: 1,
-                    background: "#1B1F4B",
-                    color: "#fff",
-                    border: 0,
-                    borderRadius: 999,
-                    padding: "10px 14px",
-                    fontSize: 13,
-                    fontWeight: 500,
-                    cursor: "pointer",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Icon size={16} strokeWidth={2} />
-                  {item.label}
-                </a>
-              );
-            })}
-          </div>
-
           <a
             href={registerLink.href}
             style={{
@@ -626,7 +468,7 @@ export function Nav() {
               alignItems: "center",
               justifyContent: "center",
               gap: 6,
-              marginTop: 4,
+              marginTop: 24,
               background: registerLink.bg,
               color: "#fff",
               border: 0,
