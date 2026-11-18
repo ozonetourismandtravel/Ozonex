@@ -81,19 +81,19 @@ export function Stats() {
         {/* Header row */}
         <div className="stats-header">
           <h2 className="font-display stats-heading">
-            3 World Wide
+            2 World Wide
             <br />
             Locations
           </h2>
           <p className="stats-subtext">
-            Strategic hubs across India, UAE and Kuwait — ensuring truly global coverage with
+            Strategic hubs across India and the UAE — ensuring truly global coverage with
             seamless coordination and reliable support.
           </p>
         </div>
 
         {/* Location tags */}
         <div className="stats-tags">
-          {["India", "UAE", "Kuwait"].map((loc) => (
+          {["India", "UAE"].map((loc) => (
             <span key={loc} className="stats-tag">
               {loc}
             </span>
