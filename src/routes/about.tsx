@@ -39,10 +39,6 @@ const milestones = [
     event: "Founded in Trivandrum with a mission to simplify corporate travel.",
   },
   {
-    year: "2016",
-    event: "Expanded to Chennai.",
-  },
-  {
     year: "2018",
     event: "Achieved IATA Accreditation.",
   },
