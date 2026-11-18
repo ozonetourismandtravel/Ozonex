@@ -222,7 +222,7 @@ function AboutPage() {
         </p>
 
         <div className="hero-fade about-tags">
-          {["IATA Accredited", "Est. 2014", "2 Countries", "4 Global Offices", "24/7 Support"].map(
+          {["IATA Accredited", "Est. 2014", "4 Global Offices", "24/7 Support"].map(
             (t) => (
               <span key={t} className="about-tag">
                 <span className="about-tag-dot">✦</span>
@@ -265,7 +265,6 @@ function AboutPage() {
         <div className="about-stats">
           {[
             { num: "2014", label: "Year founded" },
-            { num: "5", label: "Countries" },
             { num: "4", label: "Global offices" },
             { num: "IATA", label: "Accredited operator" },
           ].map((s) => (
@@ -530,7 +529,7 @@ function AboutPage() {
           margin: 80px auto 0;
 
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 32px;
 
           text-align: center;
@@ -810,7 +809,7 @@ function AboutPage() {
           }
 
           .about-stats {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
           }
 
           .services-grid {
@@ -859,7 +858,7 @@ function AboutPage() {
           }
 
           .about-stats {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
           }
 
