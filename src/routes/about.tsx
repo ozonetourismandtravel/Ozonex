@@ -39,10 +39,6 @@ const milestones = [
     event: "Founded in Trivandrum with a mission to simplify corporate travel.",
   },
   {
-    year: "2016",
-    event: "Expanded to Chennai and Cochin.",
-  },
-  {
     year: "2018",
     event: "Achieved IATA Accreditation.",
   },
@@ -226,7 +222,7 @@ function AboutPage() {
         </p>
 
         <div className="hero-fade about-tags">
-          {["IATA Accredited", "Est. 2014", "3 Countries", "6 Global Offices", "24/7 Support"].map(
+          {["IATA Accredited", "Est. 2014", "2 Countries", "4 Global Offices", "24/7 Support"].map(
             (t) => (
               <span key={t} className="about-tag">
                 <span className="about-tag-dot">✦</span>
@@ -270,7 +266,7 @@ function AboutPage() {
           {[
             { num: "2014", label: "Year founded" },
             { num: "5", label: "Countries" },
-            { num: "6", label: "Global offices" },
+            { num: "4", label: "Global offices" },
             { num: "IATA", label: "Accredited operator" },
           ].map((s) => (
             <div key={s.label} className="about-stat">

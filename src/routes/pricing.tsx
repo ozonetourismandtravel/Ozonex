@@ -75,12 +75,6 @@ const offices = [
     phone: "+91 44 3130 2651",
   },
   {
-    city: "Cochin",
-    flag: "🇮🇳",
-    detail: "Praveen Chandran Building, Pipeline JN, Palarivattam, Ernakulam, Kerala 682024",
-    phone: "+91 9605766200",
-  },
-  {
     city: "Delhi",
     flag: "🇮🇳",
     detail: "2-A/3, S/F Front Side, Kundan Mansion, Asaf Ali Road, Turkman Gate, New Delhi 110002",
@@ -93,7 +87,6 @@ const offices = [
       "Shop No. 51, Al Durrah Tower, Trade Center First, Sheikh Zayed Rd, Opp Museum of the Future",
     phone: "+971 56 455 7700",
   },
-  { city: "Kuwait", flag: "🇰🇼", detail: "Kuwait City, Kuwait", phone: "" },
 ];
 
 const teamSizes = ["1–50 travellers", "51–200 travellers", "201–500 travellers", "500+ travellers"];
@@ -340,7 +333,7 @@ function PricingPage() {
           className="hero-fade mt-8 flex flex-wrap justify-center gap-6"
           style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", letterSpacing: "0.08em" }}
         >
-          {["IATA Accredited", "Est. 2014", "6 Offices"].map((t) => (
+          {["IATA Accredited", "Est. 2014", "4 Offices"].map((t) => (
             <span key={t} className="flex items-center gap-2">
               <span style={{ color: "var(--gold)" }}>✦</span> {t}
             </span>
@@ -637,7 +630,7 @@ function PricingPage() {
           </h2>
         </div>
 
-        <div className="max-w-[1320px] mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="max-w-[1320px] mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {offices.map((o) => (
             <div
               key={o.city}

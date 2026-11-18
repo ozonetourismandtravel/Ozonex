@@ -659,7 +659,7 @@ export function VideoShowcase() {
 
 // Fixed display order for the "Offices" column, regardless of what order
 // CONTACT.officeLocations happens to be defined in.
-const OFFICE_DISPLAY_ORDER = ["Dubai", "Kuwait", "Trivandrum", "Kochi", "Chennai", "Delhi"];
+const OFFICE_DISPLAY_ORDER = ["Dubai", "Trivandrum", "Chennai", "Delhi"];
 
 function sortOffices(offices: string[]): string[] {
   return [...offices].sort((a, b) => {
