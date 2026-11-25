@@ -5,6 +5,7 @@ import { renderErrorPage } from "./lib/error-page";
 import {
   AE_GTM_ID,
   AE_ORIGIN,
+  COM_GA4_ID,
   COM_ORIGIN,
   INDIA_ONLY_PATHS,
   STATIC_PATHS,
@@ -164,6 +165,17 @@ function gtag(){dataLayer.push(arguments);}
 <!-- End Google Tag Manager -->`;
 }
 
+function ga4Snippet(id: string): string {
+  return `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=${id}"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${id}');
+</script>`;
+}
+
 function gtmBodySnippet(id: string): string {
   return `<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${id}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -221,6 +233,12 @@ async function rewriteHtml(response: Response, url: URL): Promise<Response> {
       ? html.replace(charset, (m) => `${m}${gtmHeadSnippet(AE_GTM_ID)}`)
       : html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}${gtmHeadSnippet(AE_GTM_ID)}`);
     html = html.replace(/<body(\s[^>]*)?>/i, (m) => `${m}${gtmBodySnippet(AE_GTM_ID)}`);
+  } else if (!url.pathname.startsWith("/admin")) {
+    // Google tag (GA4) on ozonextravel.com, right after <meta charset> / <head>.
+    const charset = /<meta[^>]+charset=[^>]*>/i;
+    html = charset.test(html)
+      ? html.replace(charset, (m) => `${m}${ga4Snippet(COM_GA4_ID)}`)
+      : html.replace(/<head(\s[^>]*)?>/i, (m) => `${m}${ga4Snippet(COM_GA4_ID)}`);
   }
 
   if (headExtras.length) {

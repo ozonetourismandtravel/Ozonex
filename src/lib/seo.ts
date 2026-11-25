@@ -12,6 +12,9 @@ export const AE_ORIGIN = "https://ozonextravel.ae";
 // Google Tag Manager container for ozonextravel.ae
 export const AE_GTM_ID = "GTM-MVBFJJCH";
 
+// Google Analytics 4 (Google tag) for ozonextravel.com
+export const COM_GA4_ID = "G-70VQN43JLV";
+
 export function isUaeHost(hostname: string): boolean {
   return hostname.toLowerCase().endsWith(".ae");
 }
