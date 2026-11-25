@@ -21,13 +21,13 @@ const businessCategoryOptions: { value: BusinessCategory; label: string }[] = [
   { value: "cbt_company_platinum", label: "CBT – Company – Platinum" },
 ];
 
-const documentsByCountry: Record<Country, { type: DocType; label: string }[]> = {
+const documentsByCountry: Record<Country, { type: DocType; label: string; optional?: boolean }[]> = {
   india: [
     { type: "pan", label: "PAN" },
     { type: "gst", label: "GST" },
-    { type: "aadhaar", label: "Aadhaar" },
-    { type: "voter_id_passport", label: "Voter ID / Passport of authorized person" },
-    { type: "license", label: "License" },
+    { type: "aadhaar", label: "Aadhaar", optional: true },
+    { type: "voter_id_passport", label: "Voter ID / Passport of authorized person", optional: true },
+    { type: "license", label: "Driving Licence", optional: true },
   ],
   uae: [
     { type: "trade_license", label: "Trade License" },
@@ -115,7 +115,7 @@ export function RegistrationForm() {
 
     if (form.country) {
       for (const doc of documentsByCountry[form.country]) {
-        if (!files[doc.type]) {
+        if (!doc.optional && !files[doc.type]) {
           newErrors[doc.type] = `${doc.label} is required`;
         }
       }
@@ -299,7 +299,11 @@ export function RegistrationForm() {
           </h3>
 
           {requiredDocs.map((doc) => (
-            <Field key={doc.type} label={doc.label} error={errors[doc.type]}>
+            <Field
+              key={doc.type}
+              label={doc.optional ? `${doc.label} (optional)` : doc.label}
+              error={errors[doc.type]}
+            >
               <input
                 type="file"
                 accept=".pdf,.jpg,.jpeg,.png"
