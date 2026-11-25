@@ -37,7 +37,7 @@ const siteConfig = {
       href: "tel:+914713500598",
     },
     phonePlaceholder: "+91 98765 43210",
-    canonical: "https://ozonex.com/pricing",
+    canonical: "https://ozonextravel.com/pricing",
     title: "Get a Custom Quote | Ozonex",
   },
   ae: {
