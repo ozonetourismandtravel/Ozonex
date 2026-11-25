@@ -27,6 +27,11 @@ const registerLink = {
   bg: "#1B1F4B",
 };
 
+const loginLink = {
+  label: "Login",
+  href: "https://voyager.ozonextravel.com/login",
+};
+
 function HamburgerIcon({ open }: { open: boolean }) {
   const strokeColor = "#3E2723"; // dark brown
   return (
@@ -301,6 +306,32 @@ export function Nav() {
 
           {/* Right side */}
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {/* Login button */}
+            {!isMobile && (
+              <a
+                href={loginLink.href}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  background: "transparent",
+                  color: registerLink.bg,
+                  border: `1px solid ${registerLink.bg}`,
+                  borderRadius: 999,
+                  padding: "9px 20px",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                  transition: "background 0.15s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(27,31,75,.06)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                {loginLink.label}
+              </a>
+            )}
+
             {/* Standalone Register button */}
             {!isMobile && (
               <a
@@ -462,13 +493,33 @@ export function Nav() {
           })}
 
           <a
+            href={loginLink.href}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 24,
+              background: "transparent",
+              color: "#fff",
+              border: "1px solid rgba(255,255,255,.35)",
+              borderRadius: 999,
+              padding: "12px 14px",
+              fontSize: 14,
+              fontWeight: 500,
+              textDecoration: "none",
+            }}
+          >
+            {loginLink.label}
+          </a>
+
+          <a
             href={registerLink.href}
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: 6,
-              marginTop: 24,
+              marginTop: 8,
               background: registerLink.bg,
               color: "#fff",
               border: 0,
