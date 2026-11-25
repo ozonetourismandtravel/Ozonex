@@ -310,6 +310,8 @@ export function Nav() {
             {!isMobile && (
               <a
                 href={loginLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -494,6 +496,8 @@ export function Nav() {
 
           <a
             href={loginLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "flex",
               alignItems: "center",
