@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteUrl } from "@/lib/seo";
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -22,6 +23,24 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Corporate Travel Management Software | Ozonex" },
+      {
+        name: "description",
+        content:
+          "Ozonex is a corporate travel management platform for booking, approvals, travel policy compliance and expense tracking, in one place for your whole company.",
+      },
+      { property: "og:title", content: "Corporate Travel Management Software | Ozonex" },
+      {
+        property: "og:description",
+        content:
+          "Ozonex is a corporate travel management platform for booking, approvals, travel policy compliance and expense tracking, in one place for your whole company.",
+      },
+      { property: "og:url", content: siteUrl("/") },
+    ],
+    links: [{ rel: "canonical", href: siteUrl("/") }],
+  }),
   component: Index,
 });
 

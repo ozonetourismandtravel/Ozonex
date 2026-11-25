@@ -24,7 +24,7 @@ const schema = {
 
   description: "Corporate travel management software for Delhi, Noida, and Gurugram enterprises.",
 
-  url: "https://ozonex.com/corporate-travel-management-delhi",
+  url: "https://ozonextravel.com/corporate-travel-management-delhi",
 };
 
 const data: CityData = {
@@ -216,7 +216,7 @@ export const Route = createFileRoute("/corporate-travel-management-delhi")({
       {
         rel: "canonical",
 
-        href: "https://ozonex.com/corporate-travel-management-delhi",
+        href: "https://ozonextravel.com/corporate-travel-management-delhi",
       },
     ],
 

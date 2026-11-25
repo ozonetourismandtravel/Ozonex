@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { siteUrl } from "@/lib/seo";
 import { client } from "../lib/sanity";
 import { createImageUrlBuilder } from "@sanity/image-url";
 function BlogsSkeleton() {
@@ -23,6 +24,24 @@ function BlogsSkeleton() {
   );
 }
 export const Route = createFileRoute("/blogs/")({
+  head: () => ({
+    meta: [
+      { title: "Corporate Travel Management Insights & Guides | Ozonex Blog" },
+      {
+        name: "description",
+        content:
+          "Guides and insights on corporate travel management: travel policy, approvals, expense control, booking tools and business travel trends from the Ozonex team.",
+      },
+      { property: "og:title", content: "Corporate Travel Management Insights & Guides | Ozonex Blog" },
+      {
+        property: "og:description",
+        content:
+          "Guides and insights on corporate travel management: travel policy, approvals, expense control, booking tools and business travel trends from the Ozonex team.",
+      },
+      { property: "og:url", content: siteUrl("/blogs") },
+    ],
+    links: [{ rel: "canonical", href: siteUrl("/blogs") }],
+  }),
   loader: async () => {
     try {
       const blogs = await client.fetch(`

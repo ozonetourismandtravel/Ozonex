@@ -57,7 +57,7 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy | Ozonex" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://ozonex.com/privacy" }],
+    links: [{ rel: "canonical", href: "https://ozonextravel.com/privacy" }],
   }),
   component: PrivacyPage,
 });

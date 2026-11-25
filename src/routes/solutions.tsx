@@ -25,7 +25,7 @@ const schema = {
   description:
     "Enterprise corporate travel management platform with solutions for HR, finance, IT, enterprises, and SMBs.",
   areaServed: ["IN", "AE", "Global"],
-  url: "https://ozonex.com/solutions",
+  url: "https://ozonextravel.com/solutions",
 };
 
 export const Route = createFileRoute("/solutions")({
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/solutions")({
       },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://ozonex.com/solutions" }],
+    links: [{ rel: "canonical", href: "https://ozonextravel.com/solutions" }],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(schema) }],
   }),
   component: SolutionsPage,
@@ -1230,7 +1230,7 @@ function SolutionsPage() {
                     }}
                   >
                     <a
-                      href="#demo"
+                      href="/pricing"
                       style={{
                         fontFamily: "Inter",
                         fontSize: "clamp(9px,1.2vw,11px)",
