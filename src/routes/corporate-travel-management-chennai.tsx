@@ -25,7 +25,7 @@ const schema = {
   description:
     "Enterprise corporate travel management software serving businesses in Chennai and Tamil Nadu.",
 
-  url: "https://ozonex.com/corporate-travel-management-chennai",
+  url: "https://ozonextravel.com/corporate-travel-management-chennai",
 };
 
 const data: CityData = {
@@ -218,7 +218,7 @@ export const Route = createFileRoute("/corporate-travel-management-chennai")({
       {
         rel: "canonical",
 
-        href: "https://ozonex.com/corporate-travel-management-chennai",
+        href: "https://ozonextravel.com/corporate-travel-management-chennai",
       },
     ],
 
