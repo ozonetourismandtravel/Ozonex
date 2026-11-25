@@ -38,7 +38,7 @@ const schema = {
   description:
     "Corporate MICE travel management — conferences, incentive travel, group bookings, and event logistics on one platform.",
   areaServed: ["IN", "AE", "Global"],
-  url: "https://ozonex.com/mice-events",
+  url: "https://ozonextravel.com/mice-events",
 };
 
 export const Route = createFileRoute("/mice-events")({
@@ -59,7 +59,7 @@ export const Route = createFileRoute("/mice-events")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/mice-events" },
     ],
-    links: [{ rel: "canonical", href: "https://ozonex.com/mice-events" }],
+    links: [{ rel: "canonical", href: "https://ozonextravel.com/mice-events" }],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(schema) }],
   }),
   component: MicePage,
