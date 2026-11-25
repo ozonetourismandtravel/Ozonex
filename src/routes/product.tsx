@@ -29,7 +29,7 @@ const schema = {
   description:
     "Enterprise corporate travel management software with booking, approvals, expense tracking, and policy enforcement.",
   operatingSystem: "Web, iOS, Android",
-  offers: { "@type": "Offer", url: "https://ozonex.com/pricing" },
+  offers: { "@type": "Offer", url: "https://ozonextravel.com/pricing" },
 };
 
 export const Route = createFileRoute("/product")({
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/product")({
       },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://ozonex.com/product" }],
+    links: [{ rel: "canonical", href: "https://ozonextravel.com/product" }],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(schema) }],
   }),
   component: ProductPage,
