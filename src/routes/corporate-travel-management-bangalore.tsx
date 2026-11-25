@@ -19,7 +19,7 @@ const schema = {
     name: "Bangalore",
   },
   description: "Enterprise corporate travel management platform for Bangalore businesses.",
-  url: "https://ozonex.com/corporate-travel-management-bangalore",
+  url: "https://ozonextravel.com/corporate-travel-management-bangalore",
 };
 
 const data: CityData = {
@@ -212,7 +212,7 @@ export const Route = createFileRoute("/corporate-travel-management-bangalore")({
       {
         rel: "canonical",
 
-        href: "https://ozonex.com/corporate-travel-management-bangalore",
+        href: "https://ozonextravel.com/corporate-travel-management-bangalore",
       },
     ],
 
