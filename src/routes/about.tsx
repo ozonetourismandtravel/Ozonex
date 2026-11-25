@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { siteUrl } from "@/lib/seo";
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -69,6 +70,24 @@ const services = [
 ];
 
 export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About Ozonex | Corporate Travel Platform by Ozone Tourism and Travel" },
+      {
+        name: "description",
+        content:
+          "Meet the team behind Ozonex, the corporate travel management platform from Ozone Tourism and Travel, with offices in India and Dubai.",
+      },
+      { property: "og:title", content: "About Ozonex | Corporate Travel Platform by Ozone Tourism and Travel" },
+      {
+        property: "og:description",
+        content:
+          "Meet the team behind Ozonex, the corporate travel management platform from Ozone Tourism and Travel, with offices in India and Dubai.",
+      },
+      { property: "og:url", content: siteUrl("/about") },
+    ],
+    links: [{ rel: "canonical", href: siteUrl("/about") }],
+  }),
   component: AboutPage,
 });
 
