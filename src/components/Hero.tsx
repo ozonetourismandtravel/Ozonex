@@ -71,7 +71,7 @@ function Index() {
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link
-                to="/register"
+                to="/pricing"
                 className="rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-colors"
                 style={{ backgroundColor: INK }}
               >
