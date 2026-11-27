@@ -48,7 +48,7 @@ export const Route = createFileRoute("/mice-events")({
       {
         name: "description",
         content:
-          "Ozonex manages end-to-end MICE travel logistics — corporate events, conferences, incentive travel, and group movement. One platform from delegate onboarding to post-event reconciliation.",
+          "MICE travel management for corporate events, conferences, incentive trips and group travel, from delegate onboarding to post-event reconciliation.",
       },
       { property: "og:title", content: "MICE & Corporate Event Travel Management | Ozonex" },
       {
@@ -68,10 +68,12 @@ export const Route = createFileRoute("/mice-events")({
 /* ---------------- helpers ---------------- */
 
 function Words({
+  as: Tag = "h2",
   text,
   className,
   style,
 }: {
+  as?: "h1" | "h2";
   text: string;
   className?: string;
   style?: React.CSSProperties;
@@ -93,7 +95,7 @@ function Words({
     );
   }, []);
   return (
-    <h2 ref={ref} className={className} style={style}>
+    <Tag ref={ref} className={className} style={style}>
       {text.split(/(\s+)/).map((w, i) =>
         /\s+/.test(w) ? (
           <span key={i}>{w}</span>
@@ -103,7 +105,7 @@ function Words({
           </span>
         ),
       )}
-    </h2>
+    </Tag>
   );
 }
 
@@ -301,6 +303,7 @@ function Hero() {
 
         {/* Heading */}
         <Words
+          as="h1"
           text="RUN YOUR NEXT EVENT WITHOUT THE CHAOS."
           className="font-display text-white"
           style={{
@@ -1868,6 +1871,10 @@ function Tile({
   };
 }) {
   const [hover, setHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   return (
     <div
@@ -1935,7 +1942,7 @@ function Tile({
             maxWidth: "90%",
             marginTop: "14px",
             opacity: hover ? 1 : 0.9,
-            transform: hover || window.innerWidth < 768 ? "translateY(0)" : "translateY(10px)",
+            transform: hover || isMobile ? "translateY(0)" : "translateY(10px)",
             transition: "all 400ms ease",
           }}
         >
