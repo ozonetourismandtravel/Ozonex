@@ -84,9 +84,9 @@ export const Route = createFileRoute("/blogs/$slug")({
     return {
       meta: [
         { title },
-        { name: "description", content: description },
+        { name: "description", content: trimDescription(description) },
         { property: "og:title", content: title },
-        { property: "og:description", content: description },
+        { property: "og:description", content: trimDescription(description) },
         { property: "og:url", content: canonicalUrl },
         { property: "og:type", content: "article" },
         { property: "og:image", content: ogImage },
@@ -94,7 +94,7 @@ export const Route = createFileRoute("/blogs/$slug")({
         { property: "og:image:height", content: "630" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
-        { name: "twitter:description", content: description },
+        { name: "twitter:description", content: trimDescription(description) },
         { name: "twitter:image", content: ogImage },
       ],
       links: [{ rel: "canonical", href: canonicalUrl }],
@@ -276,8 +276,40 @@ pl-6
               },
             }}
           />
+          <aside className="mt-12 border-t border-black/10 pt-8" aria-label="Explore Ozonex">
+            <p className="text-xs uppercase tracking-[0.18em] opacity-60">See it in Ozonex</p>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a href="/product" className="underline underline-offset-4">
+                  How Ozonex handles booking, approvals, policy and expenses
+                </a>
+              </li>
+              <li>
+                <a href="/solutions" className="underline underline-offset-4">
+                  Ozonex for finance, HR and travel teams
+                </a>
+              </li>
+              <li>
+                <a href="/pricing" className="underline underline-offset-4">
+                  Book a 30-minute Ozonex demo
+                </a>
+              </li>
+            </ul>
+          </aside>
         </div>
       </div>
     </div>
   );
+}
+
+// Meta descriptions from the CMS can run to 240+ characters and get cut mid-sentence
+// in search results. Keep them under ~155 characters, ending on a full sentence when possible.
+function trimDescription(text?: string | null, max = 155): string {
+  if (!text) return "";
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastStop = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("? "), cut.lastIndexOf("! "));
+  if (lastStop > 80) return cut.slice(0, lastStop + 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:\s]+$/, "") + "…";
 }
