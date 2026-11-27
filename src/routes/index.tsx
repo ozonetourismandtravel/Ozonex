@@ -40,6 +40,43 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: siteUrl("/") },
     ],
     links: [{ rel: "canonical", href: siteUrl("/") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://ozonextravel.com/#organization",
+              name: "Ozonex",
+              alternateName: "Ozonex Travel",
+              url: "https://ozonextravel.com/",
+              description:
+                "Corporate travel management platform for booking, approvals, travel policy, expenses and reporting.",
+              parentOrganization: { "@type": "Organization", name: "Ozone Tourism and Travel" },
+              areaServed: ["IN", "AE"],
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://ozonextravel.com/#website",
+              name: "Ozonex",
+              url: "https://ozonextravel.com/",
+              publisher: { "@id": "https://ozonextravel.com/#organization" },
+            },
+            {
+              "@type": "SoftwareApplication",
+              name: "Ozonex",
+              applicationCategory: "BusinessApplication",
+              applicationSubCategory: "Corporate travel management software",
+              operatingSystem: "Web",
+              url: "https://ozonextravel.com/product",
+              publisher: { "@id": "https://ozonextravel.com/#organization" },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
