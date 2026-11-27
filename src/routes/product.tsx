@@ -39,7 +39,7 @@ export const Route = createFileRoute("/product")({
       {
         name: "description",
         content:
-          "Ozonex is an enterprise travel management platform unifying booking, approvals, expense tracking, and policy enforcement in one connected system. Built for CFOs, HR directors, and global operations teams.",
+          "Corporate travel management platform that unifies booking, approvals, policy enforcement and expense tracking for finance, HR and operations teams.",
       },
       { property: "og:title", content: "Corporate Travel Management Platform | Ozonex" },
       {
@@ -50,7 +50,21 @@ export const Route = createFileRoute("/product")({
       { property: "og:type", content: "website" },
     ],
     links: [{ rel: "canonical", href: "https://ozonextravel.com/product" }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(schema) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(schema) },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map(([q, a]) => ({
+            "@type": "Question",
+            name: String(q),
+            acceptedAnswer: { "@type": "Answer", text: String(a) },
+          })),
+        }),
+      },
+    ],
   }),
   component: ProductPage,
 });

@@ -72,13 +72,13 @@ const services = [
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Ozonex | Corporate Travel Platform by Ozone Tourism and Travel" },
+      { title: "About Ozonex | Corporate Travel Management Platform" },
       {
         name: "description",
         content:
           "Meet the team behind Ozonex, the corporate travel management platform from Ozone Tourism and Travel, with offices in India and Dubai.",
       },
-      { property: "og:title", content: "About Ozonex | Corporate Travel Platform by Ozone Tourism and Travel" },
+      { property: "og:title", content: "About Ozonex | Corporate Travel Management Platform" },
       {
         property: "og:description",
         content:

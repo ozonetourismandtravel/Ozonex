@@ -35,7 +35,7 @@ export const Route = createFileRoute("/solutions")({
       {
         name: "description",
         content:
-          "Ozonex delivers enterprise travel management solutions for large organisations, HR teams, finance departments, and growing SMBs. Policy enforcement, approval automation, and real-time expense visibility.",
+          "Corporate travel management solutions for enterprises, HR, finance and growing SMBs: policy enforcement, automated approvals and live expense visibility.",
       },
       { property: "og:title", content: "Corporate Travel Management Solutions | Ozonex" },
       {
