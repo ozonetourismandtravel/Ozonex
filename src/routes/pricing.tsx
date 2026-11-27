@@ -118,7 +118,7 @@ export const Route = createFileRoute("/pricing")({
         {
           name: "description",
           content:
-            "Ozonex pricing is tailored to your organisation. Tell us about your travel programme and we'll build a plan that fits your team size, policy complexity, and budget.",
+            "Ozonex pricing is tailored to your organisation. Tell us about your travel programme and we'll build a plan for your team size, policies and budget.",
         },
         { property: "og:title", content: site.title },
         { property: "og:type", content: "website" },
