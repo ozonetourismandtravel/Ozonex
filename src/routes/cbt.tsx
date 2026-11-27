@@ -13,7 +13,7 @@ export const Route = createFileRoute("/cbt")({
       {
         name: "description",
         content:
-          "Ozonex CBT moves travel control into the booking itself, so policy is applied upfront, approvers decide with full context, and finance sees spend as it's committed.",
+          "Ozonex CBT moves travel control into the booking: policy applies upfront, approvers decide with full context and finance sees spend as it's committed.",
       },
       { property: "og:title", content: "OZONEX CBT — Control Built into Every Booking" },
       {
