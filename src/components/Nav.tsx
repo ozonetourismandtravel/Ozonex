@@ -29,7 +29,7 @@ const registerLink = {
 
 const loginLink = {
   label: "Login",
-  href: "https://voyager.ozonextravel.ae/login",
+  href: "https://voyager.ozonextravel.com/login",
 };
 
 function HamburgerIcon({ open }: { open: boolean }) {
