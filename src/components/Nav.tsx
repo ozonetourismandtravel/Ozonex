@@ -29,8 +29,17 @@ const registerLink = {
 
 const loginLink = {
   label: "Login",
-  href: "https://voyager.ozonextravel.ae/login",
+  href: "https://voyager.ozonextravel.ae/login", // default (ozonextravel.ae)
+  hrefCom: "https://voyager.ozonextravel.com/login", // used on ozonextravel.com
 };
+
+// Pick the login URL that matches the domain the site is opened on
+function getLoginHref() {
+  if (typeof window !== "undefined" && window.location.hostname.endsWith("ozonextravel.com")) {
+    return loginLink.hrefCom;
+  }
+  return loginLink.href;
+}
 
 function HamburgerIcon({ open }: { open: boolean }) {
   const strokeColor = "#3E2723"; // dark brown
@@ -100,6 +109,11 @@ export function Nav() {
   const [isMobile, setIsMobile] = useState(false);
   const [productOpen, setProductOpen] = useState(false); // desktop dropdown
   const [productExpanded, setProductExpanded] = useState(false); // mobile accordion
+  const [loginHref, setLoginHref] = useState(loginLink.href);
+
+  useEffect(() => {
+    setLoginHref(getLoginHref());
+  }, []);
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
@@ -309,7 +323,7 @@ export function Nav() {
             {/* Login button */}
             {!isMobile && (
               <a
-                href={loginLink.href}
+                href={loginHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -495,7 +509,7 @@ export function Nav() {
           })}
 
           <a
-            href={loginLink.href}
+            href={loginHref}
             target="_blank"
             rel="noopener noreferrer"
             style={{
